@@ -34,4 +34,11 @@ object exercise {
   // we can modify by gettng the average
   def sqrt(x: Double) = fixedPoint(y => (y + x  / y)/ 2)(1)
   sqrt(2)
+
+  //Now we need to create a function to average damping functions
+  def averageDamp(f: Double => Double)(x: Double ) = (x + f(x)) / 2
+  def dampSqrt(x: Double) =
+    fixedPoint(averageDamp(y => x / y))(1)
+
+  dampSqrt(2)
 }
