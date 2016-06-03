@@ -52,3 +52,27 @@ class Nil[T] extends List[T] {
   def tail = throw new NoSuchElementException("Nil.tail")
 }
 
+//functions can also have Type parameters
+def singleton[T](elem: T) = new Cons[T](elem, new Nil[T])
+singleton[Int](1)
+singleton(true)
+singleton("Hola")
+
+//Type parameters do not affect evaluation
+// they are removed before evaluating the program
+// This is called "Type erasure"
+
+//Type parameters is a form of Polymorphism
+
+//Ex: write a function nth that takes an integer and a
+// list and selects the nth element of the list
+def takeNth[T](n: Int, list: List[T]): T = {
+  if(list.isEmpty) throw new IndexOutOfBoundsException
+  if (n == 0) list.head
+  else takeNth(n - 1, list.tail )
+}
+
+val list = new Cons(1, new Cons(2, new Cons(3, new Nil)))
+
+takeNth(2, list)
+takeNth(-1, list)
