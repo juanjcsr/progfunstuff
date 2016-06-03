@@ -17,3 +17,13 @@ if (true) 1 else false
 //Traits can only contain fields and concrete methods
 //Traits cannot have value parameters, only classes can
 //They are "like" interfaces
+
+
+class Cons(val head: Int, _tail: Int) {
+
+}
+//This is equivalent to:
+class Cons1(_head: Int, _tail: Int) {
+  val head = _head
+  val tail = _tail
+}
